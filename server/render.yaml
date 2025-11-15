@@ -1,0 +1,14 @@
+services:
+  - type: web
+    name: socketio-chat-server
+    env: node
+    plan: free
+    buildCommand: npm install
+    startCommand: npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: CORS_ORIGIN
+        value: https://your-frontend-domain.vercel.app
+      - key: CLIENT_URL
+        value: https://your-frontend-domain.vercel.app

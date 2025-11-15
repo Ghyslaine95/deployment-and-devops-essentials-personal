@@ -1,0 +1,35 @@
+{
+  "name": "socketio-chat-server",
+  "version": "1.0.0",
+  "description": "Real-time chat server with Socket.io",
+  "main": "server.js",
+  "scripts": {
+    "dev": "nodemon server.js",
+    "start": "node server.js",
+    "test": "node --test"
+  },
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "compression": "^1.8.1",
+    "cors": "^2.8.5",
+    "dotenv": "^16.6.1",
+    "express": "^4.21.2",
+    "express-rate-limit": "^8.2.1",
+    "helmet": "^8.1.0",
+    "jsonwebtoken": "^9.0.2",
+    "morgan": "^1.10.1",
+    "socket.io": "^4.7.2"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  },
+  "keywords": [
+    "socket.io",
+    "chat",
+    "real-time",
+    "express",
+    "nodejs"
+  ],
+  "author": "Ghyslaine",
+  "license": "MIT"
+}
