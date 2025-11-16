@@ -2,7 +2,6 @@
   "name": "socketio-chat-client",
   "type": "module",
   "version": "1.0.0",
-  "description": "Real-time chat client built with React and Socket.io",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
@@ -14,7 +13,8 @@
     "socket.io-client": "^4.7.2"
   },
   "devDependencies": {
-    "@vitejs/plugin-react": "^4.0.3",
+    "@vitejs/plugin-react": "^4.1.0",
+    "terser": "^5.44.1",
     "vite": "^4.4.5"
   }
 }
