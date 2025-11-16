@@ -16,6 +16,9 @@ const App = () => {
   const [participantCount, setParticipantCount] = useState(0);
   const messagesEndRef = useRef(null);
 
+  // Use environment variable for backend URL with fallback
+  const backendUrl = import.meta.env.VITE_API_URL || 'https://socketio-chat-server-cb6e.onrender.com';
+
   console.log('=== APP STATE ===', {
     isConnected,
     username,
@@ -23,12 +26,13 @@ const App = () => {
     messagesCount: messages.length,
     usersCount: users.length,
     participantCount,
-    currentRoom
+    currentRoom,
+    backendUrl
   });
 
   useEffect(() => {
-    console.log('🔌 Initializing socket connection to localhost:5000');
-    const newSocket = io('http://localhost:5000');
+    console.log('🔌 Initializing socket connection to:', backendUrl);
+    const newSocket = io(backendUrl);
     setSocket(newSocket);
 
     newSocket.on('connect', () => {
@@ -130,7 +134,7 @@ const App = () => {
       console.log('🧹 Cleaning up socket');
       newSocket.close();
     };
-  }, []);
+  }, [backendUrl]);
 
   useEffect(() => {
     // Update participants when room changes
@@ -210,6 +214,9 @@ const App = () => {
           <h1>Socket.io Chat</h1>
           <div className={`status-message ${isConnected ? 'status-connected' : 'status-disconnected'}`}>
             Server: {isConnected ? 'CONNECTED ✅' : 'DISCONNECTED ❌'}
+            <div style={{ fontSize: '12px', marginTop: '5px' }}>
+              {backendUrl}
+            </div>
           </div>
           <form onSubmit={(e) => {
             e.preventDefault();
@@ -333,7 +340,7 @@ const App = () => {
         <div className="messages-container">
           {messages.length === 0 ? (
             <div className="empty-messages">
-              No messages yet in #${currentRoom}. Start the conversation!
+              No messages yet in #{currentRoom}. Start the conversation!
             </div>
           ) : (
             messages.map(message => (
