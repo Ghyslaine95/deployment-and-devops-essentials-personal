@@ -25,7 +25,7 @@ jobs:
     - name: Build client
       run: cd client && npm run build
       env:
-        VITE_API_URL:https://socketio-chat-server-cb6e.onrender.com
+        VITE_API_URL: https://socketio-chat-server.onrender.com
         
     - name: Test server dependencies
       run: cd server && npm ci
